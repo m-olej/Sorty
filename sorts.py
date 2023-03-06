@@ -1,3 +1,5 @@
+from GeneratorDanych import sedgewick
+
 def selectionSort(array):
   n = len(array)
   new_array = []
@@ -11,17 +13,21 @@ def selectionSort(array):
 
 
 def insertionSort(array):
+  new_array = []
   for j in range(1, len(array)):
     while j > 0 and array[j] < array[j-1]:
        temp = array[j-1]
        array[j-1] = array[j]
        array[j] = temp
        j -= 1
+    new_array = array[:]
+    return new_array
 
 
-def shellSort(array, sedwick_list):
+def shellSort(array):
     new_array = list(array)
-    for val in sedwick_list:
+    global sedgewick
+    for val in sedgewick:
         for i in range(val, len(new_array)):
             temp = new_array[i]
             j = i
@@ -71,5 +77,10 @@ def quickSort(array, i, j, pivot):
     while i < len(array):
         while array[pivot] >= array[i]: i+=1
         while array[pivot] >= array[j]: j-=1
-        if
 
+sortsDict = {
+    "selection sort": selectionSort,
+    "insertion sort": insertionSort,
+    "sedgewick shell sort": shellSort,
+    "heap sort": heapSort
+}

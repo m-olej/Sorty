@@ -1,6 +1,11 @@
 import random
 
 
+# --- list of different amount of arguments to test --- #
+# dane o wiele zmniejszone do testów xd #
+# testSizeList = [10*x for x in range(1, 3)]
+testSizeList = [10]
+
 def generator(n):
     ascendList = list()
     descendList = list()
@@ -10,14 +15,16 @@ def generator(n):
 
     #-----------Rosnąca-----------------
     for l in range(n):
-        ascendList.append(l)
+        ascendList.append(int(random.random()*n))
+    ascendList.sort()    
 
     # -----------Malejąca-----------------
     for i in range(n):
-        descendList.append((n - 1) - i)
+        descendList.append(int(random.random()*n))
+    descendList.sort(reverse=True)    
 
     # -----------Losowa-----------------
-    for y in range(n):
+    for s in range(n):
         randList.append(int(random.random() * n))
 
     # -----------W kształcie A-----------------
@@ -44,7 +51,6 @@ def generator(n):
     sedwick_list.sort(reverse=True)
 
 
-    return [ascendList, descendList, aList, randList, constList], sedwick_list
+    return {"ascendList": ascendList, "descendList": descendList, "randList": randList, "aList": aList, "constList": constList}, sedwick_list 
 
-
-
+listDict, sedgewick = generator(10)
