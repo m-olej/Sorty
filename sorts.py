@@ -61,17 +61,18 @@ def kopcowanie(array, koniec, i):
 
 
 def heapSort(array):
-
+    new_array4 = array[:]
     #---------------ROBIENIE KOPCA----------------
-    for i in range(len(array)//2 - 1, -1, -1):
-        kopcowanie(array, len(array), i)
+    for i in range(len(new_array4)//2 - 1, -1, -1):
+        kopcowanie(new_array4, len(new_array4), i)
 
     # #-------------Root z kopca idzicie na koniec---------
-    for i in range(len(array)-1, 0, -1):
-        temp = array[i]
-        array[i] = array[0]
-        array[0] = temp
-        kopcowanie(array, i, 0)
+    for i in range(len(new_array4)-1, 0, -1):
+        temp = new_array4[i]
+        new_array4[i] = new_array4[0]
+        new_array4[0] = temp
+        kopcowanie(new_array4, i, 0)
+    return new_array4
 
 #--------------------Qucik Sort--------------------------
 def parttioton(array, low, high):
@@ -125,14 +126,15 @@ def quickSortRandom(array, low, high):
         quickSort(array, low, pivot)
         quickSort(array, pivot + 1, high)
 
-test = [5, 6, 7, 8, 1, 2, 9]
-quickSortRandom(test, 0, len(test) - 1)
+# test = [5, 6, 7, 8, 1, 2, 9]
+# quickSortRandom(test, 0, len(test) - 1)
 
 
 
 sortsDict = {
     "selection sort": selectionSort,
     "insertion sort": insertionSort,
-    "Sedgewick shell sort": shellSort
+    "Sedgewick shell sort": shellSort,
+    "heap sort": heapSort
 }
 
