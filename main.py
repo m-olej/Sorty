@@ -1,20 +1,16 @@
 from sorts import *
 from GeneratorDanych import *
-
-
-
+from timeit import Timer
 
 for n in testSizeList:
-    listDict, sedwick_list = generator(n)
     print(f"Testy dla {n} elementów")
     print("-"*n)
-    print(f"lista Sedwicka: {sedwick_list}")
-    for k in listDict.keys():
-        print(f"Unsorted {k}: \n {listDict[k]}")
-        print('-'*n)
-        currentArray = listDict[k][:]
-        for l in sortsDict.keys():
-            print(f"Sorted list by {l} \n {sortsDict[l](currentArray)}")
-
-
+    for a, s in sortsDict.items():
+        listDict, sedwick_list = generator(n)
+        for k, v in listDict.items():
+            print(f"Unsorted {k}: {v}")
+            print(f"Sorted by {a} \n {s(v)}")
+            t = Timer(lambda: s(v))
+            print(f"Time taken by algorithm: {t.timeit()} s")
+            
 
