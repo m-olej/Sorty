@@ -1,22 +1,20 @@
 from sorts import *
 from GeneratorDanych import *
-from timeit import timeit 
-# for choosing list size
-# n = int(input())
+
+
+
 
 for n in testSizeList:
-    print(n)
-    print("-"*n)
     listDict, sedwick_list = generator(n)
-    listNameArray = list(listDict.keys())
-    listArray = listDict.values()
-    sortsList = list(sortsDict.keys())
-    # print(sedwick_list)
-    for k, v in listDict.items():
-        print(f"Unsorted {k}: \n {v}")
+    print(f"Testy dla {n} elementów")
+    print("-"*n)
+    print(f"lista Sedwicka: {sedwick_list}")
+    for k in listDict.keys():
+        print(f"Unsorted {k}: \n {listDict[k]}")
         print('-'*n)
-        for l, b in sortsDict.items():
-            print(f"Sorted list by {l} \n {b(v)}")
+        currentArray = listDict[k][:]
+        for l in sortsDict.keys():
+            print(f"Sorted list by {l} \n {sortsDict[l](currentArray)}")
 
 
 

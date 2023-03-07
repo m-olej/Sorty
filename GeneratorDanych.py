@@ -53,4 +53,4 @@ def generator(n):
 
     return {"ascendList": ascendList, "descendList": descendList, "randList": randList, "aList": aList, "constList": constList}, sedwick_list 
 
-listDict, sedgewick = generator(10)
+listDict, sedgewickList = generator(10)

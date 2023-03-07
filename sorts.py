@@ -1,41 +1,40 @@
-from GeneratorDanych import sedgewick
+from GeneratorDanych import sedgewickList
 
 def selectionSort(array):
-  n = len(array)
-  new_array = []
-  while n > 0:
-    minVal = min(array)
-    minIndex = array.index(minVal)
-    new_array.append(minVal)
-    array.pop(minIndex)
-    n -= 1
-  return new_array
+    n = len(array)
+    new_array = []
+    while n > 0:
+        minVal = min(array)
+        minIndex = array.index(minVal)
+        new_array.append(minVal)
+        array.pop(minIndex)
+        n -= 1
+    return new_array
 
 
 def insertionSort(array):
-  new_array = []
-  for j in range(1, len(array)):
-    while j > 0 and array[j] < array[j-1]:
-       temp = array[j-1]
-       array[j-1] = array[j]
-       array[j] = temp
-       j -= 1
-    new_array = array[:]
-    return new_array
+    new_array2 = array[:]
+    for i in range(1, len(new_array2)):
+        while i > 0 and new_array2[i] < new_array2[i-1]:
+            temp = new_array2[i-1]
+            new_array2[i-1] = new_array2[i]
+            new_array2[i] = temp
+            i -= 1
+    return new_array2
+
 
 
 def shellSort(array):
-    new_array = list(array)
-    global sedgewick
-    for val in sedgewick:
-        for i in range(val, len(new_array)):
-            temp = new_array[i]
+    new_array3 = list(array)
+    for val in sedgewickList:
+        for i in range(val, len(new_array3)):
+            temp = new_array3[i]
             j = i
-            while j >= val and new_array[j - val] > temp:
-                new_array[j] = new_array[j - val]
+            while j >= val and new_array3[j - val] > temp:
+                new_array3[j] = new_array3[j - val]
                 j -= val
-            new_array[j] = temp
-    return new_array
+            new_array3[j] = temp
+    return new_array3
 
 
 def kopcowanie(array, koniec, i):
@@ -81,6 +80,6 @@ def quickSort(array, i, j, pivot):
 sortsDict = {
     "selection sort": selectionSort,
     "insertion sort": insertionSort,
-    "sedgewick shell sort": shellSort,
-    "heap sort": heapSort
+    "Sedgewick shell sort": shellSort
 }
+
