@@ -4,7 +4,7 @@ import random
 # --- list of different amount of arguments to test --- #
 # dane o wiele zmniejszone do testów xd #
 # testSizeList = [10*x for x in range(1, 3)]
-testSizeList = [10]
+testSizeList = [1000]
 
 def generator(n):
     ascendList = list()
@@ -53,4 +53,4 @@ def generator(n):
 
     return {"ascendList": ascendList, "descendList": descendList, "randList": randList, "aList": aList, "constList": constList}, sedwick_list 
 
-listDict, sedgewickList = generator(10)
+listDict, sedgewickList = generator(10000)

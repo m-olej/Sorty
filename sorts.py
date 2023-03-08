@@ -3,15 +3,17 @@ import sys
 import random
 sys.setrecursionlimit(10000)
 def selectionSort(array):
-    n = len(array)
-    new_array = []
-    while n > 0:
-        minVal = min(array)
-        minIndex = array.index(minVal)
-        new_array.append(minVal)
-        array.pop(minIndex)
-        n -= 1
-    return new_array
+    for i in range(len(array)):
+        minVal = array[i]
+        for j in range(i, len(array)):
+            if minVal > array[j]:
+                minVal = array[j]
+                minIndex = j
+        if minVal != array[i]:
+            temp = array[i]
+            array[i] = minVal
+            array[minIndex] = temp
+    return array
 
 
 def insertionSort(array):
@@ -137,4 +139,5 @@ sortsDict = {
     "Sedgewick shell sort": shellSort,
     "heap sort": heapSort
 }
+
 
