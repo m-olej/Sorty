@@ -6,8 +6,9 @@ import time
 # --- Selection sort --- #
 selectionSortTimes = {}
 for a in testSizeList:
-    listDict, sedgewickList = generator(a)
+    listDict = generator(a)
     for k, v in listDict.items():
+      kopia = list(v)
       print(f"Unsorted {k}: {v}")
       start = time.time()
       selectionSort(v)

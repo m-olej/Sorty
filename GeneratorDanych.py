@@ -38,18 +38,6 @@ def generator(n):
     const = int(random.random() * n)
     constList = [const] * n
 
-    # -----------Dane do shellSorta-----------------
-    sedwick_list = [1]
-    sedwick = 0
-    k = 0
-    while n >= sedwick:
-        sedwick = 4 ** (k + 1) + 3 * 2 ** (k) + 1
-        if n > sedwick:
-            sedwick_list.append(sedwick)
-        k += 1
-    sedwick_list.sort(reverse=True)
+    return {"ascendList": ascendList, "descendList": descendList, "randList": randList, "aList": aList, "constList": constList}
 
 
-    return {"ascendList": ascendList, "descendList": descendList, "randList": randList, "aList": aList, "constList": constList}, sedwick_list 
-
-listDict, sedgewickList = generator(10000)

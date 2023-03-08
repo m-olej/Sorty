@@ -1,9 +1,6 @@
-from GeneratorDanych import sedgewickList
 import sys
 import random
-sys.setrecursionlimit(10000)
-
-
+sys.setrecursionlimit(2147483647)
 def selectionSort(array):
     new_array = array[:]
     for i in range(len(new_array)):
@@ -19,29 +16,40 @@ def selectionSort(array):
 
 
 def insertionSort(array):
-    new_array2 = array[:]
-    for i in range(1, len(new_array2)):
-        while i > 0 and new_array2[i] < new_array2[i-1]:
-            temp = new_array2[i-1]
-            new_array2[i-1] = new_array2[i]
-            new_array2[i] = temp
+    new_array = array[:]
+    for i in range(1, len(new_array)):
+        while i > 0 and new_array[i] < new_array[i-1]:
+            temp = new_array[i-1]
+            new_array[i-1] = new_array[i]
+            new_array[i] = temp
             i -= 1
-    return new_array2
-
-
-
+    return new_array
+#------------------------------SHELL SORT-----------------------
+def sedwick(n):
+    sedwick_list = [1]
+    sedwick = 0
+    k = 0
+    while n >= sedwick:
+        sedwick = 4 ** (k + 1) + 3 * 2 ** (k) + 1
+        if n > sedwick:
+            sedwick_list.append(sedwick)
+        k += 1
+    sedwick_list.sort(reverse=True)
+    return sedwick_list
 def shellSort(array):
-    new_array3 = list(array)
-    for val in sedgewickList:
-        for i in range(val, len(new_array3)):
-            temp = new_array3[i]
+    sedwick_list = sedwick(len(array))
+    new_array = list(array)
+    for val in sedwick_list:
+        for i in range(val, len(new_array)):
+            temp = new_array[i]
             j = i
-            while j >= val and new_array3[j - val] > temp:
-                new_array3[j] = new_array3[j - val]
+            while j >= val and new_array[j - val] > temp:
+                new_array[j] = new_array[j - val]
                 j -= val
-            new_array3[j] = temp
-    return new_array3
+            new_array[j] = temp
+    return new_array
 
+#----------------------------HEAP SORT----------------------------------------
 
 def kopcowanie(array, koniec, i):
     rodzic = i
@@ -65,20 +73,21 @@ def kopcowanie(array, koniec, i):
 
 
 def heapSort(array):
-    new_array4 = array[:]
+    new_array = list(array)
     #---------------ROBIENIE KOPCA----------------
-    for i in range(len(new_array4)//2 - 1, -1, -1):
-        kopcowanie(new_array4, len(new_array4), i)
+    for i in range(len(new_array)//2 - 1, -1, -1):
+        kopcowanie(new_array, len(new_array), i)
 
     # #-------------Root z kopca idzicie na koniec---------
-    for i in range(len(new_array4)-1, 0, -1):
-        temp = new_array4[i]
-        new_array4[i] = new_array4[0]
-        new_array4[0] = temp
-        kopcowanie(new_array4, i, 0)
-    return new_array4
+    for i in range(len(new_array)-1, 0, -1):
+        temp = new_array[i]
+        new_array[i] = new_array[0]
+        new_array[0] = temp
+        kopcowanie(new_array, i, 0)
+    return new_array
 
 #--------------------Qucik Sort--------------------------
+
 def parttioton(array, low, high):
     pivot = array[high]
     start = low
@@ -105,7 +114,7 @@ def quickSort(array, low, high):
 
 
 def parttiotonRandom(array, low, high):
-    pivot = random.choice(array)
+    pivot = random.choice(array[low:high])
     start = low
     end = high
     while True:
@@ -127,6 +136,9 @@ def quickSortRandom(array, low, high):
         pivot = parttioton(array, low, high)
         quickSort(array, low, pivot)
         quickSort(array, pivot + 1, high)
+
+# test = [5, 6, 7, 8, 1, 2, 9]
+# quickSortRandom(test, 0, len(test) - 1)
 
 
 
