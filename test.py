@@ -6,6 +6,6 @@ listDict, sedgewickList = generator(10)
 
 print(listDict['randList'])
 
-selectionSort(listDict['randList'])
+print(selectionSort(listDict['randList']))
 
 print(listDict['randList'])

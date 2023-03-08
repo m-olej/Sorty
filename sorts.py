@@ -2,18 +2,20 @@ from GeneratorDanych import sedgewickList
 import sys
 import random
 sys.setrecursionlimit(10000)
+
+
 def selectionSort(array):
-    for i in range(len(array)):
-        minVal = array[i]
-        for j in range(i, len(array)):
-            if minVal > array[j]:
-                minVal = array[j]
+    new_array = array[:]
+    for i in range(len(new_array)):
+        minVal = new_array[i]
+        minIndex = i
+        for j in range(i, len(new_array)):
+            if minVal > new_array[j]:
+                minVal = new_array[j]
                 minIndex = j
-        if minVal != array[i]:
-            temp = array[i]
-            array[i] = minVal
-            array[minIndex] = temp
-    return array
+        if new_array[minIndex] != new_array[i]:
+            new_array[i], new_array[minIndex] = minVal, new_array[i]
+    return new_array
 
 
 def insertionSort(array):
@@ -96,7 +98,6 @@ def parttioton(array, low, high):
             return end
 
 def quickSort(array, low, high):
-    print(test)
     if low < high:
         pivot = parttioton(array, low, high)
         quickSort(array, low, pivot)
@@ -122,14 +123,10 @@ def parttiotonRandom(array, low, high):
             return end
 
 def quickSortRandom(array, low, high):
-    print(test)
     if low < high:
         pivot = parttioton(array, low, high)
         quickSort(array, low, pivot)
         quickSort(array, pivot + 1, high)
-
-# test = [5, 6, 7, 8, 1, 2, 9]
-# quickSortRandom(test, 0, len(test) - 1)
 
 
 
