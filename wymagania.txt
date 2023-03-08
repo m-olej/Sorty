@@ -20,3 +20,6 @@ Wykresy (ilość elementów od czasu)
 można na więcej niż jeden wykres
 
 Lepiej całość w jednym języku 
+
+Bonusik:
+Pokaż różnicę między heapsortem bez globalnej tablicy i z.

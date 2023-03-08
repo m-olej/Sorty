@@ -3,7 +3,7 @@ import random
 
 # --- list of different amount of arguments to test --- #
 # dane o wiele zmniejszone do testów xd #
-testSizeList = [1000*x for x in range(1, 3)]
+testSizeList = [5000*x for x in range(1, 2)]
 
 def generator(n):
     ascendList = list()
@@ -14,13 +14,11 @@ def generator(n):
 
     #-----------Rosnąca-----------------
     for l in range(n):
-        ascendList.append(int(random.random()*n))
-    ascendList.sort()    
+        ascendList.append(l)
 
     # -----------Malejąca-----------------
     for i in range(n):
-        descendList.append(int(random.random()*n))
-    descendList.sort(reverse=True)    
+        descendList.append(n - i)  
 
     # -----------Losowa-----------------
     for s in range(n):

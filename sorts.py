@@ -36,6 +36,8 @@ def sedwick(n):
         k += 1
     sedwick_list.sort(reverse=True)
     return sedwick_list
+
+
 def shellSort(array):
     sedwick_list = sedwick(len(array))
     new_array = list(array)

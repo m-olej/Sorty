@@ -2,18 +2,36 @@ from sorts import *
 from GeneratorDanych import *
 import time
 
+graphData = []
 
-# --- Selection sort --- #
-selectionSortTimes = {}
+
 for a in testSizeList:
     listDict = generator(a)
-    for k, v in listDict.items():
-      kopia = list(v)
-      print(f"Unsorted {k}: {v}")
-      start = time.time()
-      selectionSort(v)
-      end = time.time()
-      selectionSortTimes[a] = end - start
-      print(f"Sorted {k} by Selection sort \n {selectionSort(v)}")
+    for m, s in sortsDict.items():
+      for k, v in listDict.items():
+        start = time.time_ns()
+        s(v)
+        end = time.time_ns()
+        timeTaken = (end - start)/(10 ** 9)
+        graphData.append([m, k, a, timeTaken])
+        
+# print(graphData)
 
-print(selectionSortTimes)
+selectionSortData = []
+insertionSortData = []
+shellSortData = []
+heapSortData = []
+
+for d in range(len(graphData)):
+   match graphData[d][0]:
+      case "selection sort":
+        selectionSortData.append(graphData[d][1:])
+      case "insertion sort":
+        insertionSortData.append(graphData[d][1:])
+      case "Sedgewick shell sort":
+        shellSortData.append(graphData[d][1:])
+      case "heap sort":
+        heapSortData.append(graphData[d][1:])
+      case _:
+        print("oh oh")
+
