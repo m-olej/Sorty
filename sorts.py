@@ -147,7 +147,7 @@ def quickSortRandom(array, low, high):
 sortsDict = {
     # "selection sort": selectionSort,
     # "insertion sort": insertionSort,
-    # "Sedgewick shell sort": shellSort,
+    "Sedgewick shell sort": shellSort,
     "heap sort": heapSort
 }
 
