@@ -1,11 +1,10 @@
 from GeneratorDanych import *
 from sorts import *
 
-listDict, sedgewickList = generator(10)
+# listDict, sedgewickList = generator(10)
 
+dic = {"test": []}
 
-print(listDict['randList'])
+dic["test"].append([1, 2])
 
-print(selectionSort(listDict['randList']))
-
-print(listDict['randList'])
+print(dic)
