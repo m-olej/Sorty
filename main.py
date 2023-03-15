@@ -25,7 +25,6 @@ shellSortData = {"ascendList": [], "descendList": [], "randList": [], "aList": [
 heapSortData = {"ascendList": [], "descendList": [], "randList": [], "aList": [], "constList": []}
 
 sortDataList = [["selection sort" ,selectionSortData], ["insertion sort" ,insertionSortData], ["Sedgewick shell sort" ,shellSortData], ["heap sort" ,heapSortData]]
-sortDataStrList = [str(x) for x in sortDataList]
 
 for d in range(len(graphData)):
    match graphData[d][0]:
@@ -94,11 +93,13 @@ dataFile = open("data", "w")
 for l in sortDataList:
   dataFile.write(l[0] + '\n')
   for k, v in listDict.items():
-    dataFile.write(k + ": ")
+    dataFile.write(k + ":")
     for d in l[1][k]:
         strData = [str(x) for x in d]
-        dataFile.write(",".join(strData) + ' ;')
-  dataFile.write("\n")
+        dataFile.write(",".join(strData) + ';')
+    dataFile.write("\n")
+  dataFile.write("\n")  
+
 
 
 
