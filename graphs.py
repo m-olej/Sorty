@@ -1,4 +1,5 @@
 # from main import *
+from GeneratorDanych import factor
 import matplotlib.pyplot as plt
 
 
@@ -21,12 +22,16 @@ for line in dataRead:
             temp = v.split(',')
             x.append(temp[0])
             y.append(temp[1])
+        x = [int(x)/factor for x in x]
+        y = [float(y) for y in y]
+        
         if len(x) != 0 and len(y) != 0:
             plt.plot(x, y)
             plt.title(f"{sortG} - {ls[0]}")
-            plt.axis([0, max(x), 0, max(y)])
-            plt.xlabel('1e5')
-            plt.savefig(f"{sortG}-{ls[0]}")
+            # plt.axex.set_autoscale_on(True)
+            plt.xlabel(f"skala: {str(factor)}")
+            plt.ylabel(f"in Seconds")
+            plt.savefig(f"./graphs/{sortG}-{ls[0]}")
             plt.close()
         print(f"{ls[0]}\n{x}\n{y}")
     i += 1
