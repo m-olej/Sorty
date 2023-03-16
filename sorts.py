@@ -143,13 +143,53 @@ def quickSort(array, low, high):
 # test = [5, 6, 7, 8, 1, 2, 9]
 # quickSortRandom(test, 0, len(test) - 1)
 
+def Quicksort(array):
+  arr = array[:]
+    
+  if len(arr) <= 1:
+        return arr
+  
+  stack = [(0, len(arr)-1)]
+
+  while stack:
+      
+      left, right = stack.pop()
+      cut = partition(arr, left, right)
+      if cut > left:
+          stack.append((left, cut))
+      if cut + 1 < right:
+          stack.append((cut +1, right))
+  
+  return arr
+
+
+      
+
+def partition(arr, left, right):
+    pivot = arr[random.randint(left, right)]
+    i = left
+    j = right
+
+    while True:
+      while arr[i] < pivot:
+          i += 1
+      while arr[j] > pivot:
+          j -= 1
+      if i < j:
+          arr[i], arr[j] = arr[j], arr[i]
+          i += 1
+          j -= 1
+      else:
+            return j
+
 
 
 sortsDict = {
     # "selection sort": selectionSort,
     # "insertion sort": insertionSort,
-    "Sedgewick shell sort": shellSort,
-    "heap sort": heapSort
+    "quick sort": Quicksort
+    # "Sedgewick shell sort": shellSort,
+    # "heap sort": heapSort
 }
 
 

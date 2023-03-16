@@ -23,8 +23,9 @@ selectionSortData = {"ascendList": [], "descendList": [], "randList": [], "aList
 insertionSortData = {"ascendList": [], "descendList": [], "randList": [], "aList": [], "constList": []}
 shellSortData = {"ascendList": [], "descendList": [], "randList": [], "aList": [], "constList": []}
 heapSortData = {"ascendList": [], "descendList": [], "randList": [], "aList": [], "constList": []}
+quickSortData = {"ascendList": [], "descendList": [], "randList": [], "aList": [], "constList": []}
 
-sortDataList = [["selection sort" ,selectionSortData], ["insertion sort" ,insertionSortData], ["Sedgewick shell sort" ,shellSortData], ["heap sort" ,heapSortData]]
+sortDataList = [["selection sort" ,selectionSortData], ["insertion sort" ,insertionSortData], ["Sedgewick shell sort" ,shellSortData], ["heap sort" ,heapSortData], ["quick sort", quickSortData]]
 
 for d in range(len(graphData)):
    match graphData[d][0]:
@@ -82,6 +83,20 @@ for d in range(len(graphData)):
             heapSortData["aList"].append([graphData[d][2], graphData[d][3]])
           case "constList":
             heapSortData["constList"].append([graphData[d][2], graphData[d][3]])
+          case _:
+            print("oh oh")
+      case "quick sort":
+        match graphData[d][1]:
+          case "ascendList":
+            quickSortData["ascendList"].append([graphData[d][2], graphData[d][3]])
+          case "descendList":
+            quickSortData["descendList"].append([graphData[d][2], graphData[d][3]])
+          case "randList":
+            quickSortData["randList"].append([graphData[d][2], graphData[d][3]])
+          case "aList":
+            quickSortData["aList"].append([graphData[d][2], graphData[d][3]])
+          case "constList":
+            quickSortData["constList"].append([graphData[d][2], graphData[d][3]])
           case _:
             print("oh oh")
       case _:
