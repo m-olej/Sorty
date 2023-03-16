@@ -95,49 +95,50 @@ def parttioton(array, low, high):
     start = low
     end = high
     while True:
-        while array[start] < pivot:
+
+        while start < high + 1 and array[start] < pivot:
             start+=1
-        while array[end] > pivot:
+        while end>-1 and array[end] > pivot:
             end-=1
-        if start < end:
+        if start <= end:
             array[start], array[end] = array[end], array[start]
             end-=1
             start+=1
-        elif start == end:
-            return end - 1
         else:
             return end
 
 def quickSort(array, low, high):
-    if low < high:
+
+    if low<high:
         pivot = parttioton(array, low, high)
         quickSort(array, low, pivot)
         quickSort(array, pivot + 1, high)
 
 
-def parttiotonRandom(array, low, high):
-    pivot = random.choice(array[low:high])
-    start = low
-    end = high
-    while True:
-        while array[start] < pivot:
-            start+=1
-        while array[end] > pivot:
-            end-=1
-        if start < end:
-            array[start], array[end] = array[end], array[start]
-            end-=1
-            start+=1
-        elif start == end:
-            return end - 1
-        else:
-            return end
 
-def quickSortRandom(array, low, high):
-    if low < high:
-        pivot = parttioton(array, low, high)
-        quickSort(array, low, pivot)
-        quickSort(array, pivot + 1, high)
+# def parttiotonRandom(array, low, high):
+#     pivot = random.choice(array[low:high])
+#     start = low
+#     end = high
+#     while True:
+#         while array[start] < pivot:
+#             start+=1
+#         while array[end] > pivot:
+#             end-=1
+#         if start < end:
+#             array[start], array[end] = array[end], array[start]
+#             end-=1
+#             start+=1
+#         elif start == end:
+#             return end - 1
+#         else:
+#             return end
+#
+# def quickSortRandom(array, low, high):
+#     if low < high:
+#         pivot = parttioton(array, low, high)
+#         quickSort(array, low, pivot)
+#         quickSort(array, pivot + 1, high)
 
 # test = [5, 6, 7, 8, 1, 2, 9]
 # quickSortRandom(test, 0, len(test) - 1)
