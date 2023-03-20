@@ -16,7 +16,10 @@ for line in dataRead:
         ax.set_title(line)
 
     elif line == "\n":
+        # --- for multiple graphs --- #
+        # # tu możesz zmieniać nazwe do jakiego pliku zapisać, jeśli jest już plik o tej nazwie to nadpisze go 
         fig.savefig(sortG)
+        # tego nie tykaj #
         pass
     else:
         ls = line.split(':')
@@ -35,13 +38,15 @@ for line in dataRead:
             # --- for single graphs --- #
             # plt.plot(x, y)
             # plt.title(f"{sortG} - {ls[0]}")
-            # # plt.axex.set_autoscale_on(True)
             # plt.xlabel(f"skala: {str(factor)}")
             # plt.ylabel(f"in Seconds")
+            # # tu możesz zmieniać nazwe do jakiego pliku zapisać, jeśli jest już plik o tej nazwie to nadpisze go 
             # plt.savefig(f"./graphs/{sortG}-{ls[0]}")
             # plt.close()
             # --- for multiple graphs --- #
             ax.plot(x, y, label=ls[0])
+            ax.xlabel(f"skala: {str(factor)}")
+            ax.ylabel(f"in Seconds")
             ax.legend(loc="upper left")
         print(f"{ls[0]}\n{x}\n{y}")
     i += 1

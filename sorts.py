@@ -2,28 +2,26 @@ import sys
 import random
 sys.setrecursionlimit(2147483647)
 def selectionSort(array):
-    new_array = array[:]
-    for i in range(len(new_array)):
-        minVal = new_array[i]
+    for i in range(len(array)):
+        minVal = array[i]
         minIndex = i
-        for j in range(i, len(new_array)):
-            if minVal > new_array[j]:
-                minVal = new_array[j]
+        for j in range(i, len(array)):
+            if minVal > array[j]:
+                minVal = array[j]
                 minIndex = j
-        if new_array[minIndex] != new_array[i]:
-            new_array[i], new_array[minIndex] = minVal, new_array[i]
-    return new_array
+        if array[minIndex] != array[i]:
+            array[i], array[minIndex] = minVal, array[i]
+    return array
 
 
 def insertionSort(array):
-    new_array = array[:]
-    for i in range(1, len(new_array)):
-        while i > 0 and new_array[i] < new_array[i-1]:
-            temp = new_array[i-1]
-            new_array[i-1] = new_array[i]
-            new_array[i] = temp
+    for i in range(1, len(array)):
+        while i > 0 and array[i] < array[i-1]:
+            temp = array[i-1]
+            array[i-1] = array[i]
+            array[i] = temp
             i -= 1
-    return new_array
+    return array
 #------------------------------SHELL SORT-----------------------
 def sedwick(n):
     sedwick_list = [1]
@@ -40,16 +38,15 @@ def sedwick(n):
 
 def shellSort(array):
     sedwick_list = sedwick(len(array))
-    new_array = list(array)
     for val in sedwick_list:
-        for i in range(val, len(new_array)):
-            temp = new_array[i]
+        for i in range(val, len(array)):
+            temp = array[i]
             j = i
-            while j >= val and new_array[j - val] > temp:
-                new_array[j] = new_array[j - val]
+            while j >= val and array[j - val] > temp:
+                array[j] = array[j - val]
                 j -= val
-            new_array[j] = temp
-    return new_array
+            array[j] = temp
+    return array
 
 #----------------------------HEAP SORT----------------------------------------
 
@@ -75,18 +72,17 @@ def kopcowanie(array, koniec, i):
 
 
 def heapSort(array):
-    new_array = list(array)
     #---------------ROBIENIE KOPCA----------------
-    for i in range(len(new_array)//2 - 1, -1, -1):
-        kopcowanie(new_array, len(new_array), i)
+    for i in range(len(array)//2 - 1, -1, -1):
+        kopcowanie(array, len(array), i)
 
     # #-------------Root z kopca idzicie na koniec---------
-    for i in range(len(new_array)-1, 0, -1):
-        temp = new_array[i]
-        new_array[i] = new_array[0]
-        new_array[0] = temp
-        kopcowanie(new_array, i, 0)
-    return new_array
+    for i in range(len(array)-1, 0, -1):
+        temp = array[i]
+        array[i] = array[0]
+        array[0] = temp
+        kopcowanie(array, i, 0)
+    return array
 
 #--------------------Qucik Sort--------------------------
 
@@ -107,15 +103,12 @@ def parttioton(array, low, high):
         else:
             return end
 
-def quickSort(array, low, high):
+# def quickSort(array, low, high):
 
-    if low<high:
-        pivot = parttioton(array, low, high)
-        quickSort(array, low, pivot)
-        quickSort(array, pivot + 1, high)
-
-
-
+#     if low<high:
+#         pivot = parttioton(array, low, high)
+#         quickSort(array, low, pivot)
+#         quickSort(array, pivot + 1, high)
 # def parttiotonRandom(array, low, high):
 #     pivot = random.choice(array[low:high])
 #     start = low
@@ -144,23 +137,22 @@ def quickSort(array, low, high):
 # quickSortRandom(test, 0, len(test) - 1)
 
 def Quicksort(array):
-  arr = array[:]
     
-  if len(arr) <= 1:
-        return arr
+  if len(array) <= 1:
+        return array
   
-  stack = [(0, len(arr)-1)]
+  stack = [(0, len(array)-1)]
 
   while stack:
       
       left, right = stack.pop()
-      cut = partition(arr, left, right)
+      cut = partition(array, left, right)
       if cut > left:
           stack.append((left, cut))
       if cut + 1 < right:
           stack.append((cut +1, right))
   
-  return arr
+  return array
 
 
       

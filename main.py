@@ -4,6 +4,7 @@ import time
 
 graphData = []
 
+testsPerSort = 10
 
 for a in testSizeList:
     listDict = generator(a)
@@ -11,11 +12,16 @@ for a in testSizeList:
       print(f"{m} {a} \n ----------------")
       for k, v in listDict.items():
         print(k)
-        start = time.time_ns()
-        s(v)
-        end = time.time_ns()
-        timeTaken = (end - start)/(10 ** 9)
-        graphData.append([m, k, a, timeTaken])
+        temp = v[:]
+        av = 0
+        for f in range(10):
+          start = time.time_ns()
+          s(temp)
+          end = time.time_ns()
+          timeTaken = (end - start)/(10 ** 9)
+          av += timeTaken
+        av = av/testsPerSort
+        graphData.append([m, k, a, av])
         
 # print(graphData)
 
