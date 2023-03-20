@@ -3,7 +3,7 @@ import random
 
 # --- list of different amount of arguments to test --- #
 # dane o wiele zmniejszone do testów xd #
-factor = int(1e4)
+factor = int(1e3)
 testSizeList = [factor*x for x in range(1, 51)]
 
 def generator(n):

@@ -187,9 +187,9 @@ def partition(arr, left, right):
 sortsDict = {
     # "selection sort": selectionSort,
     # "insertion sort": insertionSort,
-    "quick sort": Quicksort
-    # "Sedgewick shell sort": shellSort,
-    # "heap sort": heapSort
+    "quick sort": Quicksort,
+    "Sedgewick shell sort": shellSort,
+    "heap sort": heapSort
 }
 
 

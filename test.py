@@ -1,53 +1,54 @@
-from GeneratorDanych import *
-import random
+# from GeneratorDanych import *
+# import random
+from matplotlib import pyplot as plt
 
 
-listDict = generator(10000)
+# listDict = generator(10000)
 
-qArray = listDict["descendList"][:]
-# print(qArray)
+# qArray = listDict["descendList"][:]
+# # print(qArray)
 
-testArr = [4, 14, 7, 2, 6, 10, 3, 8, 11, 5, 12, 6, 9]
+# testArr = [4, 14, 7, 2, 6, 10, 3, 8, 11, 5, 12, 6, 9]
 
-def Quicksort(arr):
+# def Quicksort(arr):
     
-  if len(arr) <= 1:
-        return arr
+#   if len(arr) <= 1:
+#         return arr
   
-  stack = [(0, len(arr)-1)]
+#   stack = [(0, len(arr)-1)]
 
-  while stack:
+#   while stack:
       
-      left, right = stack.pop()
-      cut = partition(arr, left, right)
-      if cut > left:
-          stack.append((left, cut))
-      if cut + 1 < right:
-          stack.append((cut +1, right))
+#       left, right = stack.pop()
+#       cut = partition(arr, left, right)
+#       if cut > left:
+#           stack.append((left, cut))
+#       if cut + 1 < right:
+#           stack.append((cut +1, right))
   
-  return arr
+#   return arr
 
 
       
 
-def partition(arr, left, right):
-    pivot = arr[random.randint(left, right)]
-    i = left
-    j = right
+# def partition(arr, left, right):
+#     pivot = arr[random.randint(left, right)]
+#     i = left
+#     j = right
 
-    while True:
-      while arr[i] < pivot:
-          i += 1
-      while arr[j] > pivot:
-          j -= 1
-      if i < j:
-          arr[i], arr[j] = arr[j], arr[i]
-          i += 1
-          j -= 1
-      else:
-            return j
+#     while True:
+#       while arr[i] < pivot:
+#           i += 1
+#       while arr[j] > pivot:
+#           j -= 1
+#       if i < j:
+#           arr[i], arr[j] = arr[j], arr[i]
+#           i += 1
+#           j -= 1
+#       else:
+#             return j
 
-print(Quicksort(qArray))
+# print(Quicksort(qArray))
 
 
 
@@ -91,3 +92,20 @@ print(Quicksort(qArray))
 
 
 # print(iterative_quicksort(qArray))
+
+
+quadX = [1, 2, 3, 4, 5]
+quadY = [1, 4, 9, 16, 25]
+
+linX = [1, 2, 3, 4, 5]
+linY = [1, 2, 3, 4, 5]
+
+
+
+fig, ax = plt.subplots()
+
+ax.plot(quadX, quadY)
+ax.plot(linX, linY)
+
+plt.close()
+plt.savefig("asda")
