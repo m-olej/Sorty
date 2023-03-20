@@ -3,7 +3,7 @@ from GeneratorDanych import factor
 import matplotlib.pyplot as plt
 
 
-dataRead = open('data', 'r')
+dataRead = open('compData', 'r')
 
 i = 0
 for line in dataRead:
@@ -45,8 +45,13 @@ for line in dataRead:
             # plt.close()
             # --- for multiple graphs --- #
             ax.plot(x, y, label=ls[0])
-            ax.xlabel(f"skala: {str(factor)}")
-            ax.ylabel(f"in Seconds")
+            ax.set_xlabel(f"skala: {str(factor)}")
+            ax.set_ylabel(f"in Seconds")
             ax.legend(loc="upper left")
         print(f"{ls[0]}\n{x}\n{y}")
     i += 1
+
+dataRead.close()
+
+# comparing sorts on same test lists #
+

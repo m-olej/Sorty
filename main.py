@@ -32,6 +32,7 @@ heapSortData = {"ascendList": [], "descendList": [], "randList": [], "aList": []
 quickSortData = {"ascendList": [], "descendList": [], "randList": [], "aList": [], "constList": []}
 
 sortDataList = [["selection sort" ,selectionSortData], ["insertion sort" ,insertionSortData], ["Sedgewick shell sort" ,shellSortData], ["heap sort" ,heapSortData], ["quick sort", quickSortData]]
+sortDataDict = {"selection sort": selectionSortData, "insertion sort": insertionSortData, "Sedgewick shell sort": shellSortData, "heap sort": heapSortData, "quick sort": quickSortData}
 
 for d in range(len(graphData)):
    match graphData[d][0]:
@@ -109,19 +110,37 @@ for d in range(len(graphData)):
         print("oh oh")
 
 
-dataFile = open("data", "w")
 
-for l in sortDataList:
-  dataFile.write(l[0] + '\n')
-  for k, v in listDict.items():
-    dataFile.write(k + ":")
-    for d in l[1][k]:
-        strData = [str(x) for x in d]
-        dataFile.write(",".join(strData) + ';')
+
+# ------ format: Sort: lists ------- #
+
+# dataFile = open("data", "w")
+
+# for l in sortDataList:
+#   dataFile.write(l[0] + '\n')
+#   for k, v in listDict.items():
+#     dataFile.write(k + ":")
+#     for d in l[1][k]:
+#         strData = [str(x) for x in d]
+#         dataFile.write(",".join(strData) + ';')
+#     dataFile.write("\n")
+#   dataFile.write("\n")  
+
+# dataFile.close()
+
+# ------ format List: sorts -------  #
+
+dataFile = open("compData", "w")
+
+for k, v in listDict.items():
+  dataFile.write(k + '\n')
+  for l, b in sortDataDict.items():
+    dataFile.write(l + ":")
+    for d in b[k]:
+      strData = [str(x) for x in d]
+      dataFile.write(",".join(strData) + ';')
     dataFile.write("\n")
-  dataFile.write("\n")  
-
-
-
+  dataFile.write("\n")
 
 dataFile.close()
+

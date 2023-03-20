@@ -155,8 +155,6 @@ def Quicksort(array):
   return array
 
 
-      
-
 def partition(arr, left, right):
     pivot = arr[random.randint(left, right)]
     i = left
