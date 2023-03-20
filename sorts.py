@@ -103,81 +103,82 @@ def parttioton(array, low, high):
         else:
             return end
 
-# def quickSort(array, low, high):
+def quickSort(array, low, high):
 
-#     if low<high:
-#         pivot = parttioton(array, low, high)
-#         quickSort(array, low, pivot)
-#         quickSort(array, pivot + 1, high)
-# def parttiotonRandom(array, low, high):
-#     pivot = random.choice(array[low:high])
-#     start = low
-#     end = high
-#     while True:
-#         while array[start] < pivot:
-#             start+=1
-#         while array[end] > pivot:
-#             end-=1
-#         if start < end:
-#             array[start], array[end] = array[end], array[start]
-#             end-=1
-#             start+=1
-#         elif start == end:
-#             return end - 1
-#         else:
-#             return end
-#
-# def quickSortRandom(array, low, high):
-#     if low < high:
-#         pivot = parttioton(array, low, high)
-#         quickSort(array, low, pivot)
-#         quickSort(array, pivot + 1, high)
+    if low<high:
+        pivot = parttioton(array, low, high)
+        quickSort(array, low, pivot)
+        quickSort(array, pivot + 1, high)
+
+def parttiotonRan(array, low, high):
+    pivot = array[random.randint(low, high)]
+    start = low
+    end = high
+    while True:
+
+        while start < high + 1 and array[start] < pivot:
+            start+=1
+        while end>-1 and array[end] > pivot:
+            end-=1
+        if start <= end:
+            array[start], array[end] = array[end], array[start]
+            end-=1
+            start+=1
+        else:
+            return end
+
+def quickSortRan(array, low, high):
+
+    if low<high:
+        pivot = parttiotonRan(array, low, high)
+        quickSortRan(array, low, pivot)
+        quickSortRan(array, pivot + 1, high)
 
 # test = [5, 6, 7, 8, 1, 2, 9]
 # quickSortRandom(test, 0, len(test) - 1)
 
-def Quicksort(array):
-    
-  if len(array) <= 1:
-        return array
-  
-  stack = [(0, len(array)-1)]
-
-  while stack:
-      
-      left, right = stack.pop()
-      cut = partition(array, left, right)
-      if cut > left:
-          stack.append((left, cut))
-      if cut + 1 < right:
-          stack.append((cut +1, right))
-  
-  return array
-
-
-def partition(arr, left, right):
-    pivot = arr[random.randint(left, right)]
-    i = left
-    j = right
-
-    while True:
-      while arr[i] < pivot:
-          i += 1
-      while arr[j] > pivot:
-          j -= 1
-      if i < j:
-          arr[i], arr[j] = arr[j], arr[i]
-          i += 1
-          j -= 1
-      else:
-            return j
+# def Quicksort(array):
+#
+#   if len(array) <= 1:
+#         return array
+#
+#   stack = [(0, len(array)-1)]
+#
+#   while stack:
+#
+#       left, right = stack.pop()
+#       cut = partition(array, left, right)
+#       if cut > left:
+#           stack.append((left, cut))
+#       if cut + 1 < right:
+#           stack.append((cut +1, right))
+#
+#   return array
+#
+#
+# def partition(arr, left, right):
+#     pivot = arr[random.randint(left, right)]
+#     i = left
+#     j = right
+#
+#     while True:
+#       while arr[i] < pivot:
+#           i += 1
+#       while arr[j] > pivot:
+#           j -= 1
+#       if i < j:
+#           arr[i], arr[j] = arr[j], arr[i]
+#           i += 1
+#           j -= 1
+#       else:
+#             return j
 
 
 
 sortsDict = {
     # "selection sort": selectionSort,
     # "insertion sort": insertionSort,
-    "quick sort": Quicksort,
+    "quick sort": quickSort,
     "Sedgewick shell sort": shellSort,
     "heap sort": heapSort
 }
